@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Blog Entry{% endblock title %}
+
+{% block content %}
+<article>
+<h2>{{ resource.meta.title }}</h2>
+<p>
+    {{ resource.meta.created }}
+</p>
+{% filter markdown|typogrify %}
+{% mark post %}
+{% block post %}{% endblock post %} 
+{% endmark %}
+{% endfilter %} 
+</article>
+{% endblock %} 
+
