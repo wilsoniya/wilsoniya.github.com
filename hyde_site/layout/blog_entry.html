@@ -4,10 +4,14 @@
 
 {% block content %}
 <article>
-<h2>{{ resource.meta.title }}</h2>
-<p>
-    {{ resource.meta.created }}
-</p>
+<h2>
+    {{ resource.meta.title }}
+    <small>
+        <time datetime="{{ resource.meta.created.isoformat() }}">
+            {{ resource.meta.created.strftime('%B %d, %Y %I:%M %p %Z') }}
+        </time> 
+    </small> 
+</h2>
 {% filter markdown|typogrify %}
 {% mark post %}
 {% block post %}{% endblock post %} 

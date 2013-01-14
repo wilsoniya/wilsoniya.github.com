@@ -3,22 +3,48 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>{% block page_title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ media_url('bootstrap/css/bootstrap.min.css') }}" 
+    <link rel="stylesheet" href="{{ media_url('css/pygments-manni.css') }}" 
+        type="text/css" media="screen" charset="utf-8">
+{#
+    <link rel="stylesheet" href="{{ media_url('css/pygments-monokai.css') }}" 
+        type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ media_url('css/pygments-native.css') }}" 
         type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="{{ media_url('css/pygments-tango.css') }}" 
         type="text/css" media="screen" charset="utf-8">
+#}
+
+    {% if site.config.mode == 'development' -%}
+    <link rel="stylesheet/less" type="text/css" href="{{ media_url('bs/less/wilsoniya.less') }}" />
+    {% else %}
+    <link rel="stylesheet" href="{{ media_url('bootstrap/css/bootstrap.min.css') }}" 
+        type="text/css" media="screen" charset="utf-8">
+    {%- endif %}
+
 </head>
 
 <body>
+<header>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="{{ content_url('/') }}" class="brand">wilsoniya.com</a>
+                <ul class="nav">
+                    {% for item in menu %}
+                    {%- set class = '' %}
+                    {%- if (resource.url == item.url) or (node == site.content.node_from_relative_path(item.url)) %}
+                        {%- set class = 'active' %}
+                    {%- endif %}
+                    <li class="{{ class }}">
+                        <a href="{{ content_url(item.url) }}">{{ item.title }}</a>
+                    </li>
+                    {% endfor %} 
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
 <div class="container">
-    <header>
-        {%- from "macros.html" import draw_menu with context %}
-        {{ draw_menu(menu) }}
-        <h1>wilsoniya.com</h1>
-
-        <div class="clearbox"></div>
-        <hr />
-    </header>
 
     {% block content %}{% endblock %}    
 
@@ -29,8 +55,14 @@
 </div> 
 
 <script type="text/javascript" charset="utf-8" 
-    src="{{ media_url('bootstrap/js/bootstrap.min.js') }}"> 
+    src="{{ media_url('bs/bootstrap/js/bootstrap.min.js') }}"> 
 </script>
+
+{% if site.config.mode == 'development' -%}
+<script type="text/javascript" src="{{ media_url('js/less-1.3.3.min.js') }}"></script>
+{%- else %}
+{%- endif %}
+
 </body>
 
 </html>

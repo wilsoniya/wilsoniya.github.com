@@ -3,11 +3,40 @@
 {% block title %}Blog{% endblock title %}
 
 {% block content %}
+    {#
     {%- for article in resource.node.walk_resources_sorted_by_created() %}
         <div>
-            <a href="{{ content_url(article.url) }}">{{ article.name }} - fart</a>
+            <a href="{{ content_url(article.url) }}">{{ article.meta.title }}</a>
         </div>
     {%- endfor %}
+    #}
+    {%- for post in resource.page.posts %}
+    <a href="{{ content_url(post.url) }}" title="{{ post.meta.created.isoformat() }}">
+        {{ post.meta.title }}</a>
+    {%- endfor %}
+
+    {%- if resource.page.previous or resource.page.next %}
+    <div class="row">
+        <div class="span12">
+            <ul class="pager">
+                {%- if resource.page.next.resource %}
+                <li class="previous">
+                    <a href="{{ content_url(resource.page.next.resource.url) }}">
+                        &larr; Older
+                    </a>
+                </li>
+                {%- endif %} 
+                {%- if resource.page.previous %}
+                <li class="next">
+                    <a href="{{ content_url(resource.page.previous.resource.url) }}">
+                        Newer &rarr;
+                    </a>
+                </li>
+                {%- endif %}
+            </ul> 
+        </div>
+    </div> 
+    {%- endif %}
 
 
 {% endblock %} 

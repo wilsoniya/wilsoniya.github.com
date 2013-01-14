@@ -1,15 +1,32 @@
 ---
 title: The future is farting
 description: BRAAAP!
-created: !!timestamp 2013-01-12 13:37:50 
+created: !!timestamp 2013-01-13t14:42:13 
 ---
 
+<div class="row">
+<div class="span6">
+{% filter syntax('python') %}
+def main():
+    print c for c in 'hello, world!'
+
+if __name__ == '__main__':
+    main()
+{% endfilter %}
+</div>
+<div class="span6">
+{% filter markdown|typogrify %}
 the rain in spain falls mainly on the plain
 
 
 the quick brown fox jumps over the lazy dog
 
+
 the **quick, brown** fox jumps over the **lazy** dog.
+{% endfilter %} 
+</div>
+</div>
+
 
 {% filter syntax('html') %}
 <html>
@@ -34,10 +51,5 @@ the **quick, brown** fox jumps over the **lazy** dog.
 {% endfilter %}
 
 
-{% filter syntax('python') %}
-def main():
-    print c for c in 'hello, world!'
 
-if __name__ == '__main__':
-    main()
-{% endfilter %}
+<button class="btn btn-primary">Push Me!</button>

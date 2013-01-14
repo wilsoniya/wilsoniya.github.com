@@ -2,6 +2,8 @@ mode: learning
 media_root: media
 media_url: /media
 base_url: /
+mode: development
+#mode: production
 
 template: hyde.ext.templates.jinja.Jinja2Template
 
@@ -12,6 +14,7 @@ plugins:
     - hyde.ext.plugins.tagger.TaggerPlugin
     - hyde.ext.plugins.syntext.SyntextPlugin
     - hyde.ext.plugins.textlinks.TextlinksPlugin
+    - hyde.ext.plugins.paginator.PaginatorPlugin
 
 context:
     data:
@@ -32,8 +35,7 @@ meta:
 
 sorter:
     created:
-        attr: source_file.kind
-#            - meta.created
+        attr: meta.created
         reverse: true
         filters:
             meta.listable: true
