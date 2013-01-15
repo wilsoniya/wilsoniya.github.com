@@ -44,7 +44,7 @@ sorter:
 publisher:
     github:
         type: hyde.ext.publishers.dvcs.Git
-        path: ./dvcs
+        path: ../
         branch: gh-pages
         url: git@github.com:wilsoniya/wilsoniya.com.git
 
