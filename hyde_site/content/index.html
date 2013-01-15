@@ -4,25 +4,41 @@
 
 {% block content %}
 
-<dl>
-    <dt>Author</dt>
-    <dd>{{ author.name }}</dd>
-    <dt>Author URL</dt>
-    <dd>{{ author.url }}</dd>
-</dl>
+<div class="container">
+    <div class="row">
+        <div class="span8">
+            <dl>
+                <dt>Author</dt>
+                <dd>{{ author.name }}</dd>
+                <dt>Author URL</dt>
+                <dd>{{ author.url }}</dd>
+            </dl>
 
-<p>
-    media url: {{ media_url('') }}
-</p>
+            <p>
+                <ul>
+                    {%- for item in menu %}
+                    <li>
+                        <a href="{{ content_url(item.url) }}">{{ item.title }}</a>
+                    </li>
+                    {%- endfor %}
+                </ul>
+            </p> 
+        </div>
+        <div class="span4">
+            <div class="well well-small" style="padding: 9px 0;">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Recent Posts</li>
+                    {% set node = site.content.node_from_relative_path('blog') %}
+                    {%- for post in node.walk_resources_sorted_by_created() %}
+                        <li>
+                        	<a href="{{ content_url(post.url) }}">{{ post.meta.title }}</a>
+                        </li>
+                    {%- endfor %}
+                </ul> 
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    <ul>
-        {%- for item in menu %}
-        <li>
-            <a href="{{ content_url(item.url) }}">{{ item.title }}</a>
-        </li>
-        {%- endfor %}
-    </ul>
-</p>
 {% endblock %} 
 

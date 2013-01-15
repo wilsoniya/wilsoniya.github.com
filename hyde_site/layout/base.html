@@ -16,6 +16,9 @@
 
     {% if site.config.mode == 'development' -%}
     <link rel="stylesheet/less" type="text/css" href="{{ media_url('bs/less/wilsoniya.less') }}" />
+    {#
+    <link rel="stylesheet/less" type="text/css" href="{{ media_url('bs/less/responsive.less') }}" />
+    #}
     {% else %}
     <link rel="stylesheet" href="{{ media_url('bootstrap/css/bootstrap.min.css') }}" 
         type="text/css" media="screen" charset="utf-8">
@@ -25,10 +28,9 @@
 
 <body>
 <header>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navbar-inverse">
         <div class="navbar-inner">
             <div class="container">
-                <a href="{{ content_url('/') }}" class="brand">wilsoniya.com</a>
                 <ul class="nav">
                     {% for item in menu %}
                     {%- set class = '' %}
@@ -43,16 +45,26 @@
             </div>
         </div>
     </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>wilsoniya.com</h1>
+            <p class="lead">
+                Learning, software, computer science, and the world.
+            </p>
+        </div> 
+    </div>
 </header>
-<div class="container">
 
-    {% block content %}{% endblock %}    
+<div class="page-content">
+{% block content %}{% endblock %}    
+</div>
 
-    <footer>
-        <hr />
+<footer>
+    <hr />
+    <div class="container">
         &copy; 2013 Michael Wilson
-    </footer>
-</div> 
+    </div>
+</footer>
 
 <script type="text/javascript" charset="utf-8" 
     src="{{ media_url('bs/bootstrap/js/bootstrap.min.js') }}"> 

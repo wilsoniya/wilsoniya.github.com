@@ -41,3 +41,10 @@ sorter:
             meta.listable: true
             source_file.kind: html
 
+publisher:
+    github:
+        type: hyde.ext.publishers.dvcs.Git
+        path: ./dvcs
+        branch: gh-pages
+        url: git@github.com:wilsoniya/wilsoniya.com.git
+

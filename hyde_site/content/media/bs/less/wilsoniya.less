@@ -1,16 +1,40 @@
 @import "bootstrap.less";
 
-body { padding-top:50px; }
+body { padding-top:40px; }
+
 figure.code { 
     margin:0;
     figcaption { 
-        display:none; 
     }
     > br {
         display:none;
     }
-    
 }
+
+header {
+    .jumbotron {
+        h1 {
+            font-size: 65px;
+            text-shadow: darken(@white, 60%) 0 0 15px;
+            letter-spacing:-1px;
+        }
+        padding: 40px 0;
+        #gradient.directional(#444, #111, 255deg);
+        box-shadow: 0 15px 50px #ddd;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        color: @white;
+        margin-bottom:15px;
+    }
+    .lead {
+        font-size: 22px; 
+        letter-spacing: 1px;
+        color: #ddd;
+    }
+}
+
+
+
 
 //.highlight {
 //    pre {

@@ -10,35 +10,35 @@
         </div>
     {%- endfor %}
     #}
-    {%- for post in resource.page.posts %}
-    <a href="{{ content_url(post.url) }}" title="{{ post.meta.created.isoformat() }}">
-        {{ post.meta.title }}</a>
-    {%- endfor %}
+    <div class="container">
+        {%- for post in resource.page.posts %}
+        <a href="{{ content_url(post.url) }}" title="{{ post.meta.created.isoformat() }}">
+            {{ post.meta.title }}</a>
+        {%- endfor %}
 
-    {%- if resource.page.previous or resource.page.next %}
-    <div class="row">
-        <div class="span12">
-            <ul class="pager">
-                {%- if resource.page.next.resource %}
-                <li class="previous">
-                    <a href="{{ content_url(resource.page.next.resource.url) }}">
-                        &larr; Older
-                    </a>
-                </li>
-                {%- endif %} 
-                {%- if resource.page.previous %}
-                <li class="next">
-                    <a href="{{ content_url(resource.page.previous.resource.url) }}">
-                        Newer &rarr;
-                    </a>
-                </li>
-                {%- endif %}
-            </ul> 
-        </div>
+        {%- if resource.page.previous or resource.page.next %}
+        <div class="row">
+            <div class="span12">
+                <ul class="pager">
+                    {%- if resource.page.next.resource %}
+                    <li class="previous">
+                        <a href="{{ content_url(resource.page.next.resource.url) }}">
+                            &larr; Older
+                        </a>
+                    </li>
+                    {%- endif %} 
+                    {%- if resource.page.previous %}
+                    <li class="next">
+                        <a href="{{ content_url(resource.page.previous.resource.url) }}">
+                            Newer &rarr;
+                        </a>
+                    </li>
+                    {%- endif %}
+                </ul> 
+            </div>
+        </div> 
+        {%- endif %} 
     </div> 
-    {%- endif %}
-
-
 {% endblock %} 
 
 
