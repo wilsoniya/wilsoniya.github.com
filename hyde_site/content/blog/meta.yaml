@@ -1,3 +1,0 @@
-extends: blog_entry.html
-default_block: post
-listable: true

@@ -1,6 +1,0 @@
-!!python/unicode 'about.html': [base.html, macros.html]
-!!python/unicode 'blog/fart.html': [base.html, blog_entry.html, macros.html]
-!!python/unicode 'blog/index.html': [blog_listing.html, base.html, macros.html]
-!!python/unicode 'index.html': [base.html, macros.html]
-!!python/unicode 'media/css/main.css': []
-!!python/unicode 'media/css/pygments-tango.css': []
